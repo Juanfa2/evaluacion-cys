@@ -25,7 +25,7 @@ class ArticuloFactory extends Factory
     {
         $inventario = Inventario::all()->random(1)->first();
         return [
-            'descripcion' => $this->faker->sentence(10),
+            'descripcion' => $this->faker->sentence(4),
             'ubicacion' => $this->faker->sentence(10),
             'id_inventario' => $inventario->id
 
