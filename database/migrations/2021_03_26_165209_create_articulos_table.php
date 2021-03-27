@@ -17,6 +17,7 @@ class CreateArticulosTable extends Migration
             $table->id();
             $table->longText("descripcion");
             $table->longText("ubicacion");
+            $table->integer("cantidad")->default(0);
             $table->unsignedBigInteger("id_inventario");
             $table->foreign("id_inventario")->references('id')->on("inventario");
         });

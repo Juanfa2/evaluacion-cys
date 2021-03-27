@@ -26,8 +26,27 @@ class MovimientoFactory extends Factory
     {
         $articulo = Articulo::all()->random(1)->first();
         $tipo = Tipo::all()->random(1)->first();
+
+        if($tipo->id == 1){
+            $cantidad = $this->faker->randomFloat($nbMaxDecimals = 0, $min = 100, $max = 4000);
+            $articulo->cantidad = $articulo->cantidad + $cantidad ;
+            $articulo->save();
+        }elseif ($tipo->id == 2){
+            $cantidad = $this->faker->randomFloat($nbMaxDecimals = 0, $min = 100, $max = 4000);
+            if(($articulo->cantidad - $cantidad) < 0 ){
+                $articulo->cantidad = 0 ;
+            }else{
+                $articulo->cantidad = $articulo->cantidad - $cantidad ;
+            }
+
+            $articulo->save();
+        }else{
+            $cantidad = $this->faker->randomFloat($nbMaxDecimals = 0, $min = 100, $max = 4000);
+            $articulo->cantidad = $cantidad ;
+            $articulo->save();
+        }
         return [
-            'cantidad' => $this->faker->randomFloat($nbMaxDecimals = 0, $min = 100, $max = 4000),
+            'cantidad' => $cantidad,
             'fecha' => $this->faker->date(),
             'id_articulo' => $articulo->id,
             'id_tipo' => $tipo->id

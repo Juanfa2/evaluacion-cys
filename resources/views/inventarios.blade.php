@@ -26,7 +26,7 @@
         <div class="row justify-center">
             <div class="col-md-8">
                 <div class="card">
-                   
+
                     <div class="card-body">
                         <table class="table table-sm">
                                 @if(isset($inventarios))
@@ -54,6 +54,7 @@
                                     <tr>
                                         <th>Descripcion</th>
                                         <th>Ubicacion</th>
+                                        <th>Cantidad</th>
                                         <th>Detalles</th>
 
                                     </tr>
@@ -64,6 +65,7 @@
                                         <tr>
                                             <td>{{$articulo->descripcion}}</td>
                                             <td>{{$articulo->ubicacion}}</td>
+                                            <td>{{$articulo->cantidad}}</td>
                                             <td><a href="{{url("movimiento/$articulo->id") }}">
                                                     Ver movimientos
                                                 </a></td>
